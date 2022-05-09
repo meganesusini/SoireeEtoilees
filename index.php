@@ -60,7 +60,7 @@ session_start();
                                 Admin</a>";
 
                                     echo "<div class='dropdown-menu' aria-labelledby='navbarDropdown'>";
-                                    echo "<a class='dropdown-item' href='./index.php?controleur=c_gestionSoirees&action=gererLesSoiree'>Gérer les soirées</a>";
+                                    echo "<a class='dropdown-item' href='./index.php?controleur=gestionSoiree&action=gererLesSoiree'>Gérer les soirées</a>";
 
                                     echo "</div></li>";
                                 }
@@ -69,12 +69,12 @@ session_start();
 
                             <!-- Onglet SOIREES - Consulter les soirées -->
                            <li class="nav-item">
-                                <a class="nav-link" href="./index.php?controleur=c_gestionSoirees&action=consulterLesSoiree">Soirées</a> 
+                                <a class="nav-link" href="./index.php?controleur=gestionSoiree&action=consulterLesSoiree">Soirées</a> 
                            </li>
 
                            <!-- Onglet RESERVER - Réserver pour une soirée [formulaire] -->
                             <li class="nav-item">
-                                <a class="nav-link" href="./index.php?controleur=c_gestionReservations&action=afficherFormReservation">Réserver</a> 
+                                <a class="nav-link" href="./index.php?controleur=gestionReservation&action=afficherFormReservation">Réserver</a> 
                             </li>
 
                             <!-- Onglet MON COMPTE -->
@@ -89,20 +89,20 @@ session_start();
                                     // Sous-onglets personnes connectées
                                     //Si la personne est connectée, on accède aux sous-onglets "Mes informations" et "Mes réservations"
                                     if (isset($_SESSION['loggedin'])) {
-                                        echo '<a class="dropdown-item" href="./index.php?controleur=c_gestionComptes&action=mesInformations">Mes informations</a>';
-                                        echo '<a class="dropdown-item" href="./index.php?controleur=c_gestionReservations&action=mesReservations">Mes réservations</a>';
+                                        echo '<a class="dropdown-item" href="./index.php?controleur=gestionCompte&action=mesInformations">Mes informations</a>';
+                                        echo '<a class="dropdown-item" href="./index.php?controleur=gestionReservation&action=mesReservations">Mes réservations</a>';
                                     } else {
                                     // Sous-onglets personnes non-connectées
                                     //Si la personne n'est pas connectée, on accède aux sous-onglets "Se connecter" et "S'inscrire"
-                                        echo '<a class="dropdown-item" href="./index.php?controleur=c_gestionComptes&action=afficherConnexion">Se connecter</a>';
-                                        echo '<a class="dropdown-item" href="./index.php?controleur=c_gestionComptes&action=afficherInscription">S\'inscrire</a>';
+                                        echo '<a class="dropdown-item" href="./index.php?controleur=gestionCompte&action=afficherConnexion">Se connecter</a>';
+                                        echo '<a class="dropdown-item" href="./index.php?controleur=gestionCompte&action=afficherInscription">S\'inscrire</a>';
                                     }
                                     ?>
 
                                     <?php
                                     //Si la personne est connectée, on voit l'onglet "Se déconnecter" -->
                                     if (isset($_SESSION['loggedin'])) {
-                                        echo '<a class="dropdown-item" href="./index.php?controleur=c_gestionComptes&action=seDeconnecter">Se déconnecter</a>';
+                                        echo '<a class="dropdown-item" href="./index.php?controleur=gestionCompte&action=seDeconnecter">Se déconnecter</a>';
                                     }
                                     ?>
                                 </div>
@@ -121,7 +121,7 @@ session_start();
 
         <?php
         if(!isset($_GET['controleur']))
-            $controleur = 'gestionComptes';
+            $controleur = 'gestionCompte';
         else
         $controleur = $_GET['controleur'];
 

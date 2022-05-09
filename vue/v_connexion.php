@@ -15,7 +15,7 @@
     </div>
     <div class="auth__body">
         <!-- Méthode POST -->
-        <form class="auth__form" autocomplete="off" method="post" action="./index.php?controleur=c_gestionComptes&action=seConnecter">
+        <form class="auth__form" autocomplete="off" method="post" action="./index.php?controleur=gestionCompte&action=seConnecter">
             <div class="auth__form_body">
                 <h3 class="auth__form_title">Se connecter</h3>
                 <div>

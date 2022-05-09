@@ -27,13 +27,13 @@
             // Si l'e-mail et le mdp sont saisis
             if (!empty($_POST['email'])
                 && !empty($_POST['password'])) {
-
+                    
 
                 $nvClientDAO = new ClientDAO($conn); // Connexion à la BD
                 // Si l'e-mail et le mdp correspondent la personne est connectée
                 if ($nvClientDAO->login($_POST['email'], $_POST['password'])) {
 
-                    $_SESSION['estConnecte'] = true;
+                    $_SESSION['loggedin'] = true;
                     $_SESSION['email'] = $_POST['email'];
 
                     echo "<script>document.getElementById('errorMessage').className = 'navbar-brand'</script>";

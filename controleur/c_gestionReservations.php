@@ -13,7 +13,7 @@ switch ($action)
     // On affiche la page de réservation
     case "afficherFormReservation":
         if (!isset($_SESSION['loggedin'])) {
-            echo "<script>window.location.replace('./index.php?controleur=c_gestionComptes&action=seConnecter')</script>";
+            echo "<script>window.location.replace('./index.php?controleur=gestionCompte&action=seConnecter')</script>";
             exit;
         }
         include './vue/v_Reservation.php';

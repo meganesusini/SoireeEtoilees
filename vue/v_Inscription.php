@@ -15,7 +15,7 @@
     </div>
     <div class="auth__body">
         <!-- formulaire -->
-        <form class="auth__form" autocomplete="off" method="post" action="./index.php?controleur=c_gestionComptes&action=creerUnCompte"> <!-- action -->
+        <form class="auth__form" autocomplete="off" method="post" action="./index.php?controleur=gestionCompte&action=creerUnCompte"> <!-- action -->
             <div class="auth__form_body">
                 <h3 class="auth__form_title">S'inscrire</h3>
                 <div>
