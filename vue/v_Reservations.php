@@ -15,7 +15,7 @@
     <div class="d-flex justify-content-center">
         <ul class="list-group">
             <!-- Formulaire -->
-            <form autocomplete="off" method="post" action="./index.php?controleur=c_gestionReservations&action=annulerReservation"> <!-- action -->
+            <form autocomplete="off" method="post" action="./index.php?controleur=gestionReservation&action=annulerReservation"> <!-- action -->
             
             <!-- On affiche les informations de la personne qui a réservé pour chaque soirée réservée -->
             <?php

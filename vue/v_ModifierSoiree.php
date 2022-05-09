@@ -17,7 +17,7 @@
             </div>
             <div class="auth__body">
                 <!-- Formulaire -->
-                <form class="auth__form" autocomplete="off" method="post" action="./index.php?controleur=c_gestionSoirees&action=modifierSoiree"> <!-- action -->
+                <form class="auth__form" autocomplete="off" method="post" action="./index.php?controleur=gestionSoiree&action=modifierSoiree"> <!-- action -->
                     <div class="auth__form_body">
                         <h3 class="auth__form_title">Modifier une soirée</h3>
                         <div>
@@ -45,14 +45,7 @@
                                         let selectElement = document.getElementById("libelles");
                                         var valueSelected = selectElement.options[selectElement.selectedIndex].value;
 
-                                        updateChamps(libelleValue, valueSelected.split(":::")[0], valueSelected.split(":::")[1])
-
-                                        if (true) {
-                                            $('#date').flatpickr({
-                                                defaultDate: valueSelected.split(":::")[0],
-                                                dateFormat: 'Y-m-d'
-                                            });
-                                        }
+                                        updateChamps(libelleValue, valueSelected.split(":::")[0], valueSelected.split(":::")[1]);
                                     }
                                 </script>
 
@@ -85,18 +78,6 @@
 
                                 <label class="text-uppercase small">Date</label>
                                 <input type="text" class="form-control" placeholder="" name="date" id="date">
-
-                                <!-- Script affichage date -->
-                                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-                                <script src="./flatpickr.js"></script>
-                                <?php
-                                echo "<script>
-                                    $('#date').flatpickr({
-                                        dateFormat: 'Y-m-d'
-                                    });
-                                   
-                                </script>";
-                                ?>     
                                                           
                             </div>
                             <div class="form-group">
@@ -117,7 +98,6 @@
                 </form>
             </div>
         </div>
-        <!-- partial -->
     <script>
         let selectElement = document.getElementById('libelles');
         var valueSelected = selectElement.options[selectElement.selectedIndex].text;

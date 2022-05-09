@@ -72,6 +72,7 @@
                 && (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)
                 && Outils::isDigits($_POST['tel'], 10, 10) == true
                 && $_POST['confirmPassword'] == $_POST['password'])) {
+                    
 
                 // On hâche le mdp
                 $pwd = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -82,8 +83,10 @@
 
                 // Si l'e-mail n'existe pas déjà dans la BD
                 if ($nvClientDAO->verifEmail($nvClient)[0]["nb"] == 0) {
+                    
                     // On vérifie si la longueur du mdp est sup à 8
                     if (strlen($_POST['confirmPassword']) > 8) {
+                        
                         $nvClientDAO->ajouterClient($nvClient);
                         echo "<script>document.getElementById('errorMessage').className = 'navbar-brand'</script>";
                         echo "<script>document.getElementById('errorMessage').style.color = '#00FF00'</script>";
@@ -152,7 +155,7 @@
             } 
             // Si un ou plusieurs champs ne sont pas remplis : message d'erreur
             else {
-                include './vue/v_MesInformations.php';
+                include './vue/v_Informations.php';
 
                 echo "<script>document.getElementById('errorMessage').className = 'navbar-brand'</script>";
                 echo "<script>document.getElementById('errorMessage').style.color = '#FF0000'</script>";

@@ -17,7 +17,7 @@
             </div>
             <div class="auth__body">
                 <!-- Formulaire -->
-                <form class="auth__form" autocomplete="off" method="post" action="./index.php?controleur=c_gestionReservations&action=effectuerReservation"> <!-- action -->
+                <form class="auth__form" autocomplete="off" method="post" action="./index.php?controleur=gestionReservation&action=effectuerReservation"> <!-- action -->
                     <div class="auth__form_body">
                         <h3 class="auth__form_title">Réserver</h3>
                         <div>
@@ -60,7 +60,7 @@
                                                             $conn = ConnexionBdPdo::getConnexion();
                                                             $soireeDAO = new SoireeDAO($conn);
                                                             $dates = $soireeDAO->getAllDates();
-                                                            echo Utils::showArrayJS($dates) ?>
+                                                            echo Outils::showArrayJS($dates) ?>
                                             });
                                         }
                                     }
@@ -83,7 +83,7 @@
                                 echo "<script>
                                     $('#date').flatpickr({
                                         dateFormat: 'Y-m-d',
-                                        enable: " . Utils::showArrayJS($dates) . "
+                                        enable: " . Outils::showArrayJS($dates) . "
                                     });
                                     
                                     changeCalendar();

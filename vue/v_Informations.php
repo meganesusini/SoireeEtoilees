@@ -17,7 +17,7 @@
             </div>
             <div class="auth__body">
                 <!-- Formulaire -->
-                <form class="auth__form" autocomplete="off" method="post" action="./index.php?controleur=c_gestionComptes&action=changerInformations"> <!-- action -->
+                <form class="auth__form" autocomplete="off" method="post" action="./index.php?controleur=gestionCompte&action=changerInformations"> <!-- action -->
                     <div class="auth__form_body">
                         <h3 class="auth__form_title">Mes informations</h3>
 

@@ -17,24 +17,14 @@
             </div>
             <div class="auth__body">
                 <!-- Formulaire  -->
-                <form class="auth__form" autocomplete="off" method="post" action="./index.php?controleur=c_gestionSoirees&action=ajouterUneSoiree"> <!-- action -->
+                <form class="auth__form" autocomplete="off" method="post" action="./index.php?controleur=gestionSoiree&action=ajouterUneSoiree"> <!-- action -->
                     <div class="auth__form_body">
                         <h3 class="auth__form_title">Ajouter une soirée</h3>
                         <div>
                             <div class="form-group">
                                 <label class="text-uppercase small">Date</label>
                                 <input type="text" class="form-control" placeholder="" name="date" id="date">
-
-                                <!-- Script affichage date -->
-                                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-                                <script src="./flatpickr.js"></script>
-                                <script>
-                                    $('#date').flatpickr({
-                                        mode: 'single',
-                                        dateFormat: 'Y-m-d'
-                                    });
-                                </script>
-                               
+                                <p style="font-size:12px;">Format aaaa-mm-jj</p>
                             </div>
                             <div class="form-group">
                                 <label class="text-uppercase small">libellé</label>

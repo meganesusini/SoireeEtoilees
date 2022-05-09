@@ -34,6 +34,7 @@ session_start();
         <section class="nav">
             <nav class="navbar navbar-expand-lg navbar-dark bg-none fixed-top" style="background-image: linear-gradient(#3280e4, #584dc3);">
                 <div class="container navbarColor">
+                <a class="" id="errorMessage" style=":hover { color: inherit; text-decoration: none; }"></a>
                     <a class="navbar-brand" href="#">Soirées étoilées Pic du Midi</a> <!--- logo --->
                     
 
