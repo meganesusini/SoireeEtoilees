@@ -17,7 +17,7 @@
             </div>
             <div class="auth__body">
                 <!-- Formulaire -->
-                <form class="auth__form" autocomplete="off" method="post" action="./index.php?controleur=gestionSoiree&action=supprimerUneSoiree"> <!-- action -->
+                <form class="auth__form" autocomplete="off" method="post" action="./index.php?controleur=c_gestionSoirees&action=supprimerUneSoiree"> <!-- action -->
                     <div class="auth__form_body">
                         <h3 class="auth__form_title">Supprimer une soirée</h3>
                         <div>

@@ -14,12 +14,12 @@
     switch($action) {
         // On affiche la page d'inscription
         case "afficherInscription":
-            include './vues/v_Inscription.php';
+            include './vue/v_Inscription.php';
             break;
 
         // On affiche la page de connexion
         case 'afficherConnexion':
-            include './vues/v_Connection.php';
+            include './vue/v_Connexion.php';
             break;
 
         // On vérifie si les identifiants saisis par l'utilisateur lors de la connexion sont bons
@@ -46,7 +46,7 @@
                     echo "<script>document.getElementById('errorMessage').style.color = '#FF0000'</script>";
                     echo "<script>document.getElementById('errorMessage').innerText = 'Certains champs de sont pas valides'</script>";
 
-                    include './vues/v_Connection.php';
+                    include './vue/v_Connexion.php';
                 }
 
             } 
@@ -56,7 +56,7 @@
                 echo "<script>document.getElementById('errorMessage').style.color = '#FF0000'</script>";
                 echo "<script>document.getElementById('errorMessage').innerText = 'Certains champs ne sont pas valides !'</script>";
 
-                include './vues/v_Connection.php';
+                include './vue/v_Connexion.php';
             }
             break;
 
@@ -110,7 +110,7 @@
                 echo "<script>document.getElementById('errorMessage').style.color = '#FF0000'</script>";
                 echo "<script>document.getElementById('errorMessage').innerText = 'Certains champs ne sont pas valides !'</script>";
 
-                include './vues/v_Inscription.php';
+                include './vue/v_Inscription.php';
             }
             break;
 
@@ -122,7 +122,7 @@
 
         // On affiche la page des informations
         case 'mesInformations':
-            include './vues/v_MesInformations.php';
+            include './vue/v_Informations.php';
             break;
 
         // On change les informations de l'utilisateur
@@ -143,7 +143,7 @@
                 $dao->changeInformations($_SESSION['email'], $_POST['nom'], $_POST['prenom'], $_POST['tel'], $_POST['email']);
                 $_SESSION['email'] = $_POST['email'];
 
-                include './vues/v_MesInformations.php';
+                include './vue/v_Informations.php';
                 // Message de confirmation
                 echo "<script>document.getElementById('errorMessage').className = 'navbar-brand'</script>";
                 echo "<script>document.getElementById('errorMessage').style.color = '#00FF00'</script>";
@@ -152,7 +152,7 @@
             } 
             // Si un ou plusieurs champs ne sont pas remplis : message d'erreur
             else {
-                include './vues/v_MesInformations.php';
+                include './vue/v_MesInformations.php';
 
                 echo "<script>document.getElementById('errorMessage').className = 'navbar-brand'</script>";
                 echo "<script>document.getElementById('errorMessage').style.color = '#FF0000'</script>";

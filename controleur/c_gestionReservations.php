@@ -1,10 +1,10 @@
 <?php
 
 $action = $_GET['action'];
-include "./modeles/Reservation.php";
-include "./modeles/ReservationDAO.php";
-include "./modeles/SoireeDAO.php";
-include "./modeles/Outils.php";
+include "./modele/Reservation.php";
+include "./modele/ReservationDAO.php";
+include "./modele/SoireeDAO.php";
+include "./modele/Outils.php";
 
 $conn = ConnexionBdPdo::getConnexion();
 
@@ -13,10 +13,10 @@ switch ($action)
     // On affiche la page de réservation
     case "afficherFormReservation":
         if (!isset($_SESSION['loggedin'])) {
-            echo "<script>window.location.replace('./index.php?controleur=gestionCompte&action=seConnecter')</script>";
+            echo "<script>window.location.replace('./index.php?controleur=c_gestionComptes&action=seConnecter')</script>";
             exit;
         }
-        include './vues/v_Reservation.php';
+        include './vue/v_Reservation.php';
 
         $soireeDAO = new SoireeDAO($conn);
         $libelles = $soireeDAO->getLibelles();
@@ -60,13 +60,13 @@ switch ($action)
             echo "<script>document.getElementById('errorMessage').style.color = '#FF0000'</script>";
             echo "<script>document.getElementById('errorMessage').innerText = 'Certains champs ne sont pas valides !'</script>";
         }
-        include './vues/v_Reservation.php';
+        include './vue/v_Reservation.php';
         break;
 
     // On affiche la page des réservations du clients
     case 'mesReservations':
         $reservationDAO = new ReservationDAO($conn);
-        include './vues/v_MesReservations.php';
+        include './vue/v_Reservations.php';
 
         break;
 

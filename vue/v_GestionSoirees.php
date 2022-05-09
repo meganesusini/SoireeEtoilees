@@ -9,17 +9,17 @@
 
         <div class="auth__form_actions">
             <a class="btn btn-primary btn-lg btn-block auth__form"
-                href="./index.php?controleur=gestionSoiree&action=afficherAjouterUneSoiree">
+                href="./index.php?controleur=c_gestionSoirees&action=afficherAjouterUneSoiree">
                 Ajouter une soirée
             </a>
 
             <a class="btn btn-primary btn-lg btn-block auth__form"
-                href="./index.php?controleur=gestionSoiree&action=afficherModifierUneSoiree">
+                href="./index.php?controleur=c_gestionSoirees&action=afficherModifierUneSoiree">
                 Modifier une soirée
             </a>
 
             <a class="btn btn-primary btn-lg btn-block auth__form"
-                href="./index.php?controleur=gestionSoiree&action=afficherSupprimerUneSoiree">
+                href="./index.php?controleur=c_gestionSoirees&action=afficherSupprimerUneSoiree">
                 Supprimer une soirée
             </a>
         </div>

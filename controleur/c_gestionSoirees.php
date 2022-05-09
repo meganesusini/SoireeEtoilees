@@ -6,8 +6,8 @@ else
     $action = $_GET['action'];
 
 $conn = ConnexionBdPdo::getConnexion();
-include("modeles/SoireeDAO.php");
-include("modeles/Outils.php");
+include("modele/SoireeDAO.php");
+include("modele/Outils.php");
 
 switch($action){
 
@@ -16,7 +16,7 @@ switch($action){
 		$soireeDAO = new SoireeDAO($conn);
 		$lesSoiree = $soireeDAO->getLesSoirees();
 
-		include("vues/v_Soiree.php");
+		include("vue/v_Soirees.php");
 		break;
 		
     // On affiche la page de gestion des soirées
@@ -24,7 +24,7 @@ switch($action){
         $soireeDAO = new SoireeDAO($conn);
         $lesSoiree = $soireeDAO->getLesSoirees();
 
-		include("vues/v_soireeAdmin.php");
+		include("vue/v_GestionSoirees.php");
 		break;
 
     // On ajoute une nouvelle soirée
@@ -56,17 +56,17 @@ switch($action){
 
     // On affiche la page d'ajout de soirée
     case 'afficherAjouterUneSoiree':
-        include("vues/v_AjoutSoiree.php");
+        include("vue/v_AjouterSoiree.php");
         break;
 
     // On affiche la page de modification d'une soirée
     case 'afficherModifierUneSoiree':
-        include("vues/v_ModifierSoiree.php");
+        include("vue/v_ModifierSoiree.php");
         break;
 
     // On affiche la page de suppression d'une soirée
     case 'afficherSupprimerUneSoiree':
-        include './vues/v_supprimerSoiree.php';
+        include './vue/v_SupprimerSoiree.php';
         break;
 
     // On supprimme une soirée
