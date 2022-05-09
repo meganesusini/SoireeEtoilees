@@ -128,15 +128,15 @@ session_start();
         switch ($controleur) 
         {
             case "gestionCompte":
-                include './controleur/gestionCompte.php';
+                include './controleur/c_gestionComptes.php';
                 break;
 
             case "gestionReservation":
-                include './controleur/gestionReservation.php';
+                include './controleur/c_gestionReservations.php';
                 break;
 
             case "gestionSoiree":
-                include './controleur/gestionSoiree.php';
+                include './controleur/c_gestionSoirees.php';
                 break;
         }
         ?>
