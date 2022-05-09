@@ -41,6 +41,32 @@ session_start();
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
 
+                        <!-- Code qui vérifie si la personne est un admin -->
+                        <?php
+                            include "./modele/ConnexionBdPdo.php";
+                            include "./modele/ClientDAO.php";
+
+                            // Connexion à la BD
+                            $conn = ConnexionBdPdo::getConnexion(); 
+                            $clientDAO = new ClientDAO($conn);
+
+                            // Si la personne a saisi un e-mail, on vérifie c'est un admin
+                            if (!empty($_SESSION['email'])) {
+                                $isAdmin = $clientDAO->isAdmin($_SESSION['email']); 
+
+                                if ($isAdmin) {
+                                    echo "<li class='nav-item dropdown'>";
+                                    echo "<a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                                Admin</a>";
+
+                                    echo "<div class='dropdown-menu' aria-labelledby='navbarDropdown'>";
+                                    echo "<a class='dropdown-item' href='./index.php?controleur=gestionSoiree&action=gererLesSoiree'>Gérer les soirées</a>";
+
+                                    echo "</div></li>";
+                                }
+                            }
+                        ?>
+
                             <!-- Onglet SOIREES - Consulter les soirées -->
                            <li class="nav-item">
                                 <a class="nav-link" href="./index.php?controleur=gestionSoiree&action=consulterLesSoiree">Soirées</a> 
@@ -93,6 +119,26 @@ session_start();
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+        <?php
+        if(!isset($_GET['controleur']))
+            $controleur = 'gestionCompte';
+        else
+        $controleur = $_GET['controleur'];
 
+        switch ($controleur) 
+        {
+            case "gestionCompte":
+                include './controleur/gestionCompte.php';
+                break;
+
+            case "gestionReservation":
+                include './controleur/gestionReservation.php';
+                break;
+
+            case "gestionSoiree":
+                include './controleur/gestionSoiree.php';
+                break;
+        }
+        ?>
  
 </html>
