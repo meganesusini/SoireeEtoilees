@@ -33,7 +33,7 @@
                 // Si l'e-mail et le mdp correspondent la personne est connectée
                 if ($nvClientDAO->login($_POST['email'], $_POST['password'])) {
 
-                    $_SESSION['loggedin'] = true;
+                    $_SESSION['loggedin'] = true; // confirme que l'utilisateur est bien connecté
                     $_SESSION['email'] = $_POST['email'];
 
                     echo "<script>document.getElementById('errorMessage').className = 'navbar-brand'</script>";
@@ -73,7 +73,6 @@
                 && Outils::isDigits($_POST['tel'], 10, 10) == true
                 && $_POST['confirmPassword'] == $_POST['password'])) {
                     
-
                 // On hâche le mdp
                 $pwd = password_hash($_POST['password'], PASSWORD_DEFAULT);
                 // On créé un nouvel utilisateur

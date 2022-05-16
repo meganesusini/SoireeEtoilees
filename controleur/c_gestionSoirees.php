@@ -91,7 +91,7 @@ switch($action){
                 && !empty($_POST['nvNbPlaces'])) {
 
                     $soireeDAO = new SoireeDAO($conn); // Connexion à la BD
-                    $id = explode(":::", $_POST['libelles'])[2];
+                    $id = $_POST['idSoiree'];
 
                     $soireeDAO->modifierSoiree($id, $_POST['date'], $_POST['nvLibelle'], $_POST['nvNbPlaces']);
 

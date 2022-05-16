@@ -12,6 +12,7 @@ switch ($action)
 {
     // On affiche la page de réservation
     case "afficherFormReservation":
+        // Si l'utilisateur n'est pas connecté, on affiche la page de connexion
         if (!isset($_SESSION['loggedin'])) {
             echo "<script>window.location.replace('./index.php?controleur=gestionCompte&action=seConnecter')</script>";
             exit;
@@ -29,8 +30,9 @@ switch ($action)
         if ((!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['tel']) && Outils::isDigits($_POST['tel'], 10, 10) == true)) 
         {
             // On créé une nouvelle réservation
-            $nvlReservation = new Reservation($_POST['libelles'], $_POST['nom'], $_POST['prenom'], $_POST['tel'], $_SESSION['email']);
             $nvlReservationDAO = new ReservationDAO($conn); // Connexion à la BD
+            $id = $nvlReservationDAO->getBiggestId()+1;
+            $nvlReservation = new Reservation($id, $_POST['libelles'], $_POST['nom'], $_POST['prenom'], $_POST['tel'], $_SESSION['email']);
 
             $soireeDAO = new SoireeDAO($conn); // Connexion à la BD
             // Si le nombre de places disponibles est inf à 1 : message "plus de place"
@@ -51,6 +53,7 @@ switch ($action)
                 echo "<script>document.getElementById('errorMessage').className = 'navbar-brand'</script>";
                 echo "<script>document.getElementById('errorMessage').style.color = '#00FF00'</script>";
                 echo "<script>document.getElementById('errorMessage').innerText = 'Réservation effectuée !'</script>";
+                //echo "<script>document.getElementById('errorMessage').innerText = '".$soireeDAO->getNbPlacesFromDate($_POST['libelles']). " id : " . $id. "'</script>";
             }
 
         } 
@@ -70,7 +73,7 @@ switch ($action)
 
         break;
 
-    // On annulela réservation
+    // On annule la réservation
     case 'annulerReservation':
 
         if (!empty($_POST['idAnnulation'])) {
