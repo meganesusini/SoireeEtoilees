@@ -28,14 +28,16 @@
 
                                 <?php
 
+                                // Connexion à la BD
                                 $conn = ConnexionBdPdo::getConnexion();
 
                                 $soireeDAO = new SoireeDAO($conn);
                                 $dates = $soireeDAO->getAllDates();
                                 $libelles = $soireeDAO->getLibelles();
 
+                                // On affiche les libellés des soirées à supprimer
                                 echo "<label class='text-uppercase small'>Libellé</label>";
-                                echo "<select name='libelles' id='libelles' class='form-control' onchange='changeCalendar()'>";
+                                echo "<select name='libelles' id='libelles' class='form-control'>";
 
                                 for ($i = 0; $i <= count($libelles) - 1; $i++) {
                                     echo "<option value='" . $dates[$i]["date"] . "'>" . $libelles[$i]["libelle"] . "</option>";

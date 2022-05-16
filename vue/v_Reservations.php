@@ -17,9 +17,10 @@
             <!-- Formulaire -->
             <form autocomplete="off" method="post" action="./index.php?controleur=gestionReservation&action=annulerReservation"> <!-- action -->
             
-            <!-- On affiche les informations de la personne qui a réservé pour chaque soirée réservée -->
+            <!-- On affiche les informations de la personne  pour chaque soirée qu'il a réservé -->
             <?php
-            $reservations = $reservationDAO->getReservations($_SESSION['email']);
+            $reservations = $reservationDAO->getReservations($_SESSION['email']); // On sélectionne toutes les réservations de l'utilisateur connecté
+
             foreach ($reservations as $value) {
                 echo "<li class='list-group-item'> " . strtoupper($value['nom']) . " " . $value['prenom'] . " (num : " . $value['tel'] .
                     "), pour le " . Outils::reverseDate($value['date']) . "";

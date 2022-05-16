@@ -23,34 +23,7 @@
                         <div>
                             <div class="form-group">
 
-                                <script>
-
-                                    function setSelectedValue(selectObj, valueToSet) {
-                                        for (var i = 0; i < selectObj.options.length; i++) {
-                                            if (selectObj.options[i].text== valueToSet) {
-                                                selectObj.options[i].selected = true;
-                                                return;
-                                            }
-                                        }
-                                    }
-
-                                    function updateChamps(libelle, date, places) {
-                                        document.getElementById("nvLibelle").value = libelle;
-                                        document.getElementById("date").value = date;
-                                        document.getElementById("nvNbPlaces").value = places;
-                                    }
-
-                                    function changeCalendar(libelleValue) {
-
-                                        let selectElement = document.getElementById("libelles");
-                                        var valueSelected = selectElement.options[selectElement.selectedIndex].value;
-
-                                        updateChamps(libelleValue, valueSelected.split(":::")[0], valueSelected.split(":::")[1]);
-                                    }
-                                </script>
-
                                 <?php
-
 
                                 $conn = ConnexionBdPdo::getConnexion();
                                 $soireeDAO = new SoireeDAO($conn);
@@ -59,14 +32,13 @@
                                 $places = $soireeDAO->getAllPlaces();
                                 $ids = $soireeDAO->getAllIds();
 
-
-
-                                echo "</br>";
                                 echo "<label class='text-uppercase small'>Sélectionner la soirée</label>";
-                                echo "<select name='libelles' id='libelles' class='form-control' onchange='changeCalendar(this.options[this.selectedIndex].text)'>";
+                                echo "<select name='libelles' id='libelles' class='form-control' onchange='selectedOption(this)'>";
 
                                 for ($i = 0; $i <= count($libelles) - 1; $i++) {
-                                    echo "<option value='" . $dates[$i]["date"] . ":::" . $places[$i]["nbPlaceRestante"] . ":::" . $ids[$i]["idSoiree"] . "'>" . $libelles[$i]["libelle"] . "</option>";
+                                    echo "<option value='" . $dates[$i]["date"] . "'>" . $libelles[$i]["libelle"] . "</option>";
+                                    echo "<option value='" . $ids[$i]["idSoiree"] . "' hidden>" . $places[$i]["nbPlaceRestante"] .  "</option>"; // option cachée
+                                    echo "<option value='" . $ids[$i]["idSoiree"] . "' hidden>" . $ids[$i]["idSoiree"] .  "</option>"; // option cachée
                                 }
 
                                 echo "</select>";
@@ -74,19 +46,24 @@
                                 ?>
 
                                 <br>
-                                <br>
 
                                 <label class="text-uppercase small">Date</label>
-                                <input type="text" class="form-control" placeholder="" name="date" id="date">
+                                <input type="text" class="form-control" placeholder="<?php echo $dates[0]["date"] ?>" name="date" id="date">
                                                           
                             </div>
+                            <!-- div caché -->
+                            <div class="form-group" hidden>
+                                <label class="text-uppercase small">idSoirée</label>
+                                <input type="text" class="form-control" placeholder="" name="idSoiree" id="idSoiree">
+                            </div>
+                            <!--  -->
                             <div class="form-group">
                                 <label class="text-uppercase small">Libellé</label>
-                                <input type="text" class="form-control" placeholder="" name="nvLibelle" id="nvLibelle">
+                                <input type="text" class="form-control" placeholder="<?php echo $libelles[0]["libelle"] ?>" name="nvLibelle" id="nvLibelle">
                             </div>
                             <div class="form-group">
                                 <label class="text-uppercase small">Nombre de places restantes</label>
-                                <input type="text" class="form-control" placeholder="" name="nvNbPlaces" id="nvNbPlaces">
+                                <input type="text" class="form-control" placeholder="<?php echo $places[0]["nbPlaceRestante"] ?>" name="nvNbPlaces" id="nvNbPlaces">
                             </div>
                         </div>
                     </div>
@@ -95,13 +72,28 @@
                             Modifier
                         </button>
                     </div>
+                    <script>
+                        // Affiche les critères correspondants à l'option choisie dans la liste déroulante
+                        function selectedOption(sel) {
+                            // Affichage de la date
+                            var dateSoireeSelectionnee = document.getElementById("libelles").value; 
+                            document.getElementById("date").value = dateSoireeSelectionnee;
+
+                            // Affichage du libellé
+                            var libelleSoireeSelectionnee = sel.options[sel.selectedIndex].text;
+                            document.getElementById("nvLibelle").value = libelleSoireeSelectionnee;
+                            
+                            // Affichage du nombre de places restantes
+                            var placesSoireeSelectionnee = sel.options[sel.selectedIndex+1].text;                           
+                            document.getElementById("nvNbPlaces").value = placesSoireeSelectionnee;
+
+                            // Affichage de l'id
+                            var idSoireeSelectionnee = sel.options[sel.selectedIndex+2].text;                           
+                            document.getElementById("idSoiree").value = idSoireeSelectionnee;
+                        } 
+                    </script>
                 </form>
             </div>
         </div>
-    <script>
-        let selectElement = document.getElementById('libelles');
-        var valueSelected = selectElement.options[selectElement.selectedIndex].text;
-        changeCalendar(valueSelected);
-    </script>
     </body>
 </html>
