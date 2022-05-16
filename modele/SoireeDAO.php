@@ -109,4 +109,5 @@ class SoireeDAO {
         $req = $this->getDb()->prepare("UPDATE Soiree SET date = ?, libelle = ?, NbPlaceRestante = ? WHERE idSoiree = ?");
         $req->execute([$date, $libelle, $nbPlaces, $idSoiree]);
     }
+
 }

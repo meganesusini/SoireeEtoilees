@@ -22,14 +22,15 @@ class ReservationDAO {
     // Ajouter une réservation
     public function ajouterReservation($client) {
 
+        $id = $client->getId();
         $date = $client->getDate();
         $nom = $client->getNom();
         $prenom = $client->getPrenom();
         $tel = $client->getTel();
         $email = $client->getEmail();
 
-        $req = $this->getDb()->prepare("INSERT INTO Reservation (date, nom, prenom, tel, email) VALUES (?, ?, ?, ?, ?)");
-        $req->execute([$date, $nom, $prenom, $tel, $email]);
+        $req = $this->getDb()->prepare("INSERT INTO Reservation (idReservation, date, nom, prenom, tel, email) VALUES (?, ?, ?, ?, ?, ?)");
+        $req->execute([$id, $date, $nom, $prenom, $tel, $email]);
     }
 
     // Obtenir une ou plusieurs réservations d'un client
@@ -44,6 +45,13 @@ class ReservationDAO {
     public function annulerReservation($idReservation, $email) {
         $req = $this->getDb()->prepare("DELETE FROM Reservation WHERE idReservation = ? AND email = ?");
         $req->execute([$idReservation, $email]);
+    }
+
+    // Obtenir le plus grand id d'une réservation
+    public function getBiggestId() {
+        $stmt = $this->getDb()->prepare("SELECT MAX(idReservation) AS max FROM Reservation");
+        $stmt->execute();
+        return $stmt->fetch()[0];
     }
 
 }

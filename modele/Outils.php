@@ -20,6 +20,7 @@ class Outils {
 
     }
 
+    // Permet d'afficher la date de cette façon : jj/mm/aaaa
     public static function reverseDate($date) {
         $table = explode("-", $date);
 
