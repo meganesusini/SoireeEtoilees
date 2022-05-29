@@ -31,11 +31,13 @@
                                 $libelles = $soireeDAO->getLibelles();
                                 $places = $soireeDAO->getAllPlaces();
                                 $ids = $soireeDAO->getAllIds();
+                                $indexSoiree = 0;
 
                                 echo "<label class='text-uppercase small'>Sélectionner la soirée</label>";
                                 echo "<select name='libelles' id='libelles' class='form-control' onchange='selectedOption(this)'>";
 
                                 for ($i = 0; $i <= count($libelles) - 1; $i++) {
+                                    $indexSoiree = $i;
                                     echo "<option value='" . $dates[$i]["date"] . "'>" . $libelles[$i]["libelle"] . "</option>";
                                     echo "<option value='" . $ids[$i]["idSoiree"] . "' hidden>" . $places[$i]["nbPlaceRestante"] .  "</option>"; // option cachée
                                     echo "<option value='" . $ids[$i]["idSoiree"] . "' hidden>" . $ids[$i]["idSoiree"] .  "</option>"; // option cachée
@@ -48,7 +50,7 @@
                                 <br>
 
                                 <label class="text-uppercase small">Date</label>
-                                <input type="text" class="form-control" placeholder="<?php echo $dates[0]["date"] ?>" name="date" id="date">
+                                <input type="text" class="form-control" value="<?php echo $dates[0]["date"]; ?>" name="date" id="date">
                                                           
                             </div>
                             <!-- div caché -->
@@ -59,11 +61,11 @@
                             <!--  -->
                             <div class="form-group">
                                 <label class="text-uppercase small">Libellé</label>
-                                <input type="text" class="form-control" placeholder="<?php echo $libelles[0]["libelle"] ?>" name="nvLibelle" id="nvLibelle">
+                                <input type="text" class="form-control" value="<?php echo $libelles[0]["libelle"] ?>" name="nvLibelle" id="nvLibelle">
                             </div>
                             <div class="form-group">
                                 <label class="text-uppercase small">Nombre de places restantes</label>
-                                <input type="text" class="form-control" placeholder="<?php echo $places[0]["nbPlaceRestante"] ?>" name="nvNbPlaces" id="nvNbPlaces">
+                                <input type="text" class="form-control" value="<?php echo $places[0]["nbPlaceRestante"] ?>" name="nvNbPlaces" id="nvNbPlaces">
                             </div>
                         </div>
                     </div>
