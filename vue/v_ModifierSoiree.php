@@ -31,13 +31,11 @@
                                 $libelles = $soireeDAO->getLibelles();
                                 $places = $soireeDAO->getAllPlaces();
                                 $ids = $soireeDAO->getAllIds();
-                                $indexSoiree = 0;
 
                                 echo "<label class='text-uppercase small'>Sélectionner la soirée</label>";
                                 echo "<select name='libelles' id='libelles' class='form-control' onchange='selectedOption(this)'>";
 
                                 for ($i = 0; $i <= count($libelles) - 1; $i++) {
-                                    $indexSoiree = $i;
                                     echo "<option value='" . $dates[$i]["date"] . "'>" . $libelles[$i]["libelle"] . "</option>";
                                     echo "<option value='" . $ids[$i]["idSoiree"] . "' hidden>" . $places[$i]["nbPlaceRestante"] .  "</option>"; // option cachée
                                     echo "<option value='" . $ids[$i]["idSoiree"] . "' hidden>" . $ids[$i]["idSoiree"] .  "</option>"; // option cachée
