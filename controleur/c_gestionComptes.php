@@ -46,7 +46,6 @@
                     echo "<script>document.getElementById('errorMessage').style.color = '#FF0000'</script>";
                     echo "<script>document.getElementById('errorMessage').innerText = 'Certains champs de sont pas valides'</script>";
 
-                    include './vue/v_Connexion.php';
                 }
 
             } 
@@ -56,8 +55,9 @@
                 echo "<script>document.getElementById('errorMessage').style.color = '#FF0000'</script>";
                 echo "<script>document.getElementById('errorMessage').innerText = 'Certains champs ne sont pas valides !'</script>";
 
-                include './vue/v_Connexion.php';
+                
             }
+            include './vue/v_Connexion.php';
             break;
 
         // On ajoute un nouveau compte
@@ -112,8 +112,9 @@
                 echo "<script>document.getElementById('errorMessage').style.color = '#FF0000'</script>";
                 echo "<script>document.getElementById('errorMessage').innerText = 'Certains champs ne sont pas valides !'</script>";
 
-                include './vue/v_Inscription.php';
+                
             }
+            include './vue/v_Inscription.php';
             break;
 
         // On déconnecte l'utilisateur
@@ -162,4 +163,4 @@
             }
             break;
     }
-
+?>

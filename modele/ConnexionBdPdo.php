@@ -7,7 +7,7 @@ class ConnexionBdPdo {
 
     private function __construct() {
         try {
-            self::$objPDO = new PDO('mysql:host=mysql-meganesusini.alwaysdata.net;dbname=meganesusini_soirees', '243784', 'alwaysdata40');
+            self::$objPDO = new PDO('mysql:host=mysql-meganesusini.alwaysdata.net;dbname=meganesusini_soireesetoilees', '300808', 'alwaysdata40');
             self::$objPDO->query("SET CHARACTER SET utf8");
             //echo "<br/>connexion réussie.<br/>";
         } catch (PDOException $erreur) {
@@ -31,3 +31,4 @@ class ConnexionBdPdo {
     }
 
 }
+?>

@@ -139,6 +139,9 @@ session_start();
             case "gestionSoiree":
                 include './controleur/c_gestionSoirees.php';
                 break;
+            case "gestionPrestataire":
+            include './controleur/c_gestionPrestataires.php';
+            break;
         }
         ?>
  

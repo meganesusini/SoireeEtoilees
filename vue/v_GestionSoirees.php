@@ -22,6 +22,10 @@
                 href="./index.php?controleur=gestionSoiree&action=afficherSupprimerUneSoiree">
                 Supprimer une soirée
             </a>
+            <a class="btn btn-primary btn-lg btn-block auth__form"
+                href="./index.php?controleur=gestionSoiree&action=afficherAjouterUneSoiree">
+                Ajouter un prestataire
+            </a>
         </div>
 
         <br>

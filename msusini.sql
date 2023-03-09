@@ -54,7 +54,8 @@ CREATE TABLE `Reservation` (
   `date` date DEFAULT NULL,
   `nom` varchar(100) DEFAULT NULL,
   `prenom` varchar(100) DEFAULT NULL,
-  `tel` int(15) DEFAULT NULL
+  `tel` int(15) DEFAULT NULL,
+  `email` VARCHAR(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -86,7 +87,8 @@ INSERT INTO `Roles` (`idRole`, `libelle`) VALUES
 CREATE TABLE `Soiree` (
   `idSoiree` int(11) NOT NULL,
   `date` date DEFAULT NULL,
-  `NbPlaceRestante` int(11) DEFAULT NULL
+  `NbPlaceRestante` int(11) DEFAULT NULL,
+  `libelle` VARCHAR(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

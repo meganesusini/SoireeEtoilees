@@ -24,7 +24,10 @@
                             <div class="form-group">
 
                                 <?php
-                                $soireeDAO = new SoireeDAO($conn); // Connexion à la BD
+                                // require("./modele/ConnexionBdPdo.php");
+                                // require("./modele/SoireeDAO.php");
+                                
+                                $soireeDAO = new SoireeDAO(ConnexionBdPdo::getConnexion()); // Connexion à la BD
                                 $dates = $soireeDAO->getAllDates(); // sélection de toutes les dates des soirées
                                 $libelles = $soireeDAO->getLibelles(); // sélection de tous les libellés des soirées
 
